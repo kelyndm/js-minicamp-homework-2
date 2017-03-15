@@ -1,11 +1,25 @@
 //Do not change any of the function names
 
 function getBiggest(x, y) {
+  if(x > y) {
+    return x;
+  } else {
+    return y;
+  }
   //x and y are integers.  Return the larger integer
   //if they are the same return either one
 }
 
 function greeting(language) {
+  if(language === 'German') {
+    return 'Guten Tag!';
+  } else if(language === 'English') {
+    return 'Hello!';
+  } else if(language === 'Spanish') {
+    return 'Hola!';
+  } else {
+    return 'Hello!';
+  }
   //return a greeting for three different languages:
   //language: 'German' -> 'Guten Tag!'
   //language: 'English' -> 'Hello!'
@@ -14,15 +28,18 @@ function greeting(language) {
 }
 
 function isTenOrFive(num) {
+  return (num === 10 || num === 5);
   //return true if num is 10 or 5
   //otherwise return false
 }
 
 function isInRange(num) {
   //return true if num is less than 50 and greater than 20
+  return (num < 50 && num > 20);
 }
 
 function isInteger(num) {
+  return Math.floor(num) === num;
   //return true if num is an integer
   //0.8 -> false
   //1 -> true
@@ -32,6 +49,7 @@ function isInteger(num) {
 }
 
 function fizzBuzz(num) {
+  return ((['fizz'][num%3] || '') + (['buzz'][num%5] || '')) || num;
   //if num is divisible by 3 return 'fizz'
   //if num is divisible by 5 return 'buzz'
   //if num is divisible by 3 & 5 return 'fizzbuzz'
@@ -39,6 +57,20 @@ function fizzBuzz(num) {
 }
 
 function isPrime(num) {
+  if(num < 2 || num !== Math.floor(num)) {
+    return false;
+  }
+
+  var isPrime = true;
+
+  for(var i = 2; i <= Math.sqrt(num); i++) {
+    if(num % i === 0) {
+      isPrime = false;
+    }
+  }
+
+  return isPrime;
+
   //return true if num is prime.
   //otherwise return false
   //hint: a prime number is only evenly divisible by itself and 1
@@ -47,35 +79,51 @@ function isPrime(num) {
 }
 
 function returnFirst(arr) {
+  return arr[0];
   //return the first item from the array
 }
 
 function returnLast(arr) {
+  return arr[arr.length - 1];
   //return the last item of the array
 }
 
 function getArrayLength(arr) {
+  return arr.length;
   //return the length of the array
 }
 
 function incrementByOne(arr) {
+  for(var i = 0; i < arr.length; i++) {
+    arr[i]++;
+  }
+  return arr;
   //arr is an array of integers  
   //increase each integer by one
   //return the array
 }
 
 function addItemToArray(arr, item) {
+  arr.push(item);
+  return arr;
   //add the item to the end of the array
   //return the array
 }
 
 function addItemToFront(arr, item) {
+  arr.unshift(item);
+  return arr;
   //add the item to the front of the array
   //return the array
   //hint: use the array method .unshift
 }
 
 function wordsToSentence(words) {
+  var myString = words[0];
+  for(var i = 1; i < words.length; i++) {
+    myString = myString + ' ' + words[i];
+  }
+  return myString;
   //words is an array of strings
   //return a string that is all of the words concatenated together
   //spaces need to be between each word
@@ -83,21 +131,45 @@ function wordsToSentence(words) {
 }
 
 function contains(arr, item) {
+  for(var i = 0; i < arr.length; i++) {
+    if(arr[i] === item) {
+      return true;
+    }
+  }
+  return false;
   //check to see if item is inside of arr
   //return true if it is, otherwise return false
 }
 
 function addNumbers(numbers) {
+  var sum =0;
+  for(var i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum;
   //numbers is an array of integers.
   //add all of the integers and return the value
 }
 
 function averageTestScore(testScores) {
+  var total = 0;
+  for(var i = 0; i < testScores.length; i++) {
+    total += testScores[i];
+  }
+  var avg = total / testScores.length;
+  return avg;
   //testScores is an array.  Iterate over testScores and compute the average.
   //return the average
 }
 
 function largestNumber(numbers) {
+  var largest = numbers[0];
+  for(var i = 0; i < numbers.length; i++) {
+    if(numbers[i] > largest) {
+      largest = numbers[i];
+    }
+  }
+  return largest;
   //numbers is an array of integers
   //return the largest integer
 }
